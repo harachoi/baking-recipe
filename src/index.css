@@ -278,29 +278,30 @@ button:disabled { opacity: 0.42; cursor: default; }
   --from: 0%;
   --to: 100%;
 }
-.time-slider::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 12px;
-  height: 4px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-}
+.time-slider::before,
 .time-slider::after {
   content: "";
   position: absolute;
-  left: var(--from);
-  right: calc(100% - var(--to));
+  z-index: 0;
   top: 12px;
   height: 4px;
   border-radius: 999px;
+  pointer-events: none;
+}
+.time-slider::before {
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.12);
+}
+.time-slider::after {
+  left: var(--from);
+  right: calc(100% - var(--to));
   background: #e0b09a;
 }
 .time-slider input[type="range"] {
   position: absolute;
   inset: 0;
+  z-index: 1;
   margin: 0;
   width: 100%;
   background: none;
